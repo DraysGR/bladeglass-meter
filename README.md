@@ -4,9 +4,6 @@ A combat meter for Aion 2 (EU client). For every boss fight it shows each party 
 (actual heal, overheal, HPS, heal per skill), shields, damage taken, dodges and deaths, in a small overlay
 over the game. It also reminds you of the Shugo event and of field boss respawns, with live boss timers.
 
-Bladeglass was called *Drays Aion 2 Meter* until 0.5.0. Installed copies update to the new name by themselves,
-and keep their history and settings.
-
 It only reads the game's network traffic, the way Wireshark does. It never touches the game, its files
 or its memory, and never sends anything to the game server.
 
