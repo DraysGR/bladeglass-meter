@@ -50,6 +50,9 @@ body {
     radial-gradient(900px 700px at 50% 108%, rgb(60 207 189 / .07), transparent 60%);
   background-repeat: no-repeat; overflow-x: hidden;
 }
+/* a fine grain over the glows and background (under the text and pictures), so dark gradients show no steps */
+body::after { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
@@ -94,7 +97,12 @@ p { margin: 0; }
 .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .ver { margin-top: 14px; font-size: 15px; color: var(--ink-3); min-height: 1.5em; }
 .shot { position: relative; }
-.shot::before { content: ''; position: absolute; inset: 8% 4% 0; border-radius: 40px; background: var(--glow, rgb(243 211 107 / .28)); filter: blur(60px); z-index: -1; }
+/* the glow behind a picture: a soft radial fade (a big blur showed steps), eased so it has no edge */
+.shot::before { content: ''; position: absolute; inset: -14% -12% -16%; z-index: -1; pointer-events: none;
+  --g: var(--glow, rgb(243 211 107 / .28));
+  background: radial-gradient(closest-side, var(--g), color-mix(in srgb, var(--g) 80%, transparent) 22%,
+    color-mix(in srgb, var(--g) 50%, transparent) 45%, color-mix(in srgb, var(--g) 22%, transparent) 68%,
+    color-mix(in srgb, var(--g) 6%, transparent) 86%, transparent); }
 .shot img { filter: drop-shadow(0 30px 50px rgb(0 0 0 / .55)) drop-shadow(0 2px 6px rgb(0 0 0 / .4)); }
 .hero .shot img { transform: perspective(1600px) rotateY(-9deg) rotateX(3deg); transform-origin: 30% 50%; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
 .hero .shot:hover img { transform: none; }
