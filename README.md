@@ -1,5 +1,7 @@
 # Bladeglass Meter
 
+**Website: [draysgr.github.io/bladeglass-meter](https://draysgr.github.io/bladeglass-meter/)**, with every feature, pictures, install steps and help.
+
 A combat meter for Aion 2 (EU client). For every boss fight it shows each party member's damage, healing
 (actual heal, overheal, HPS, heal per skill), shields, damage taken, dodges and deaths, in a small overlay
 over the game. It also reminds you of the Shugo event and of field boss respawns, with live boss timers.
